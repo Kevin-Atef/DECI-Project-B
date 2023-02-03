@@ -1,4 +1,4 @@
-let state = document.getElementById("status");
+let state = document.getElementsByClassName("status")[0];
 
 let expression = document.getElementById("expression")
 
@@ -6,7 +6,12 @@ let input = document.getElementById("input");
 
 let buttons = Array.from(document.getElementsByClassName("button"));
 
-let userName = "Kevin";
+let themes = Array.from(document.getElementsByClassName("theme"))
+
+let submit = document.getElementById("submit");
+
+let userName = document.getElementById("name");
+let age = document.getElementById("age");
 
 let correct = document.getElementById("correct");
 let correctNum = 0;
@@ -16,12 +21,13 @@ let wrong = document.getElementById("wrong");
 let wrongNum = 0;
 wrong.innerText = `Wrong: ${wrongNum}`;
 
-state.innerText = `Hi, ${userName}!`;
+state.innerText = `Hi!`;
 
 function login() {
     document.getElementById("main").style.display = "none";
     document.getElementById("login").style.display = "grid";
 }
+
 buttons.map(button => {
     button.addEventListener("click", (e) => {
         if (e.target.innerText == "C") {
@@ -41,13 +47,13 @@ buttons.map(button => {
                 try {
                     let ans = eval(expression.innerText);
                     if (ans == true) {
-                        state.style.color = "#00ab41";
+                        state.id = "status-correct";
                         state.innerText = "Great Job!";
                         correctNum++;
                         correct.innerText = `Correct: ${correctNum}`;
                     }
                     else {
-                        state.style.color = "#d0312d";
+                        state.id = "status-wrong";
                         state.innerText = "Try Again!";
                         wrongNum++;
                         wrong.innerText = `Wrong: ${wrongNum}`;
@@ -55,7 +61,7 @@ buttons.map(button => {
                     expression.innerText = "";
                 }
                 catch {
-                    state.style.color = "white";
+                    state.id = "";
                     state.innerText = "Error!";
                 }
                 expression.innerText = "";
@@ -64,27 +70,27 @@ buttons.map(button => {
                 input.placeholder = "Your Answer...";
             }
             else if (input.value.length == 0) {
-                state.style.color = "white";
+                state.id = "";
                 state.innerText = "Input Answer!";
             }
             else if (expression.innerText.length != 0) {
                 try {
                     let ans = eval(expression.innerText);
                     if (ans == input.value) {
-                        state.style.color = "#00ab41";
+                        state.id = "status-correct";
                         state.innerText = "Great Job!";
                         correctNum++;
                         correct.innerText = `Correct: ${correctNum}`;
                     }
                     else {
-                        state.style.color = "#d0312d";
+                        state.id = "status-wrong";
                         state.innerText = "Try Again!";
                         wrongNum++;
                         wrong.innerText = `Wrong: ${wrongNum}`;
                     }
                 }
                 catch {
-                    state.style.color = "white";
+                    state.id = "";
                     state.innerText = "Error!";
                 }
                 expression.innerText = "";
@@ -109,4 +115,22 @@ buttons.map(button => {
             }
         }
     });
+});
+
+themes.map(theme => {
+    theme.addEventListener("click", (e) => {
+        document.getElementById("default").id = "";
+        e.target.id = "default";
+    });
+});
+submit.addEventListener("click", (e) => {
+    if(userName.value != "" && age.value != "") {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("main").style.display = "grid";
+    }
+    correctNum = 0;
+    wrongNum = 0;
+    expression.innerText = "";
+    state.innerText = "";
+    state.innerText = `Hi, ${userName.value}!`;
 });

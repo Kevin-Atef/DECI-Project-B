@@ -6,7 +6,7 @@
 }
 
 main {
-    display: grid;
+    display: none;
 }
 
 #input,
@@ -36,12 +36,17 @@ main {
     height: 50px;
 }
 
-#status {
+.status {
     background-color: #000;
     grid-area: status;
     justify-self: center;
 }
-
+#status-correct {
+    color: #00ab41;
+}
+#status-wrong {
+    color: #d0312d;
+}
 #correct {
     background-color: #000;
     grid-area: correct;

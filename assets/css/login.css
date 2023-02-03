@@ -4,13 +4,19 @@
     border-radius: 10px;
     gap: 25px;
 }
-.name, .age {
+
+.name,
+.age {
     background-color: #181f32;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-#name, #age {
+
+#name,
+#age,
+.theme,
+#submit {
     color: white;
     width: 100%;
     border-style: none;
@@ -19,14 +25,51 @@
     padding: 10px;
     font-family: 'League Spartan', sans-serif;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     background-color: #34436d;
-    
+
+}
+
+#themes {
+    background-color: #181f32;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.theme,
+#submit {
+    height: 40px;
+    font-size: 20px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#default {
+    background-color: #273252;
+}
+
+.theme:hover {
+    cursor: pointer;
+    background-color: #273252;
+    transition: 0.2s;
+}
+
+#submit {
+    display: grid;
+    background-color: #000;
+    font-size: 25px;
+}
+
+#submit:hover {
+    cursor: pointer;
 }
 
 #login {
-    display: none;
+    display: grid;
 }
+
 
 .login-text {
     background-color: #181f32;
