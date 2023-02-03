@@ -9,7 +9,7 @@ main {
     display: none;
 }
 
-#input,
+.input,
 .expression,
 .info {
     color: white;
@@ -31,7 +31,7 @@ main {
     grid-template-areas: "status status" "correct wrong";
 }
 
-#input {
+.input {
     background-color: #34436d;
     height: 50px;
 }
@@ -41,12 +41,15 @@ main {
     grid-area: status;
     justify-self: center;
 }
+
 #status-correct {
     color: #00ab41;
 }
+
 #status-wrong {
     color: #d0312d;
 }
+
 #correct {
     background-color: #000;
     grid-area: correct;
@@ -72,14 +75,14 @@ main {
     align-items: center;
 }
 
-#input::placeholder {
+.input::placeholder {
     color: white;
     font-family: 'League Spartan', sans-serif;
     font-weight: bold;
     font-size: 30px;
 }
 
-#input[type="text"] {
+.input[type="text"] {
     color: white;
     font-family: 'League Spartan', sans-serif;
     font-weight: bold;
@@ -134,4 +137,3 @@ main {
     background-color: #181f32;
     color: white;
 }
-

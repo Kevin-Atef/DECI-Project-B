@@ -1,17 +1,18 @@
 let state = document.getElementsByClassName("status")[0];
 
-let expression = document.getElementById("expression")
+let expression = document.getElementsByClassName("expression")[0];
 
-let input = document.getElementById("input");
+let input = document.getElementsByClassName("input")[0];
 
 let buttons = Array.from(document.getElementsByClassName("button"));
 
-let themes = Array.from(document.getElementsByClassName("theme"))
+let themes = Array.from(document.getElementsByClassName("theme"));
+themes.push(document.getElementsByClassName("theme-default")[0]);
 
-let submit = document.getElementById("submit");
+let submit = document.getElementsByClassName("submit")[0];
 
-let userName = document.getElementById("name");
-let age = document.getElementById("age");
+let userName = document.getElementsByClassName("name")[0];
+let age = document.getElementsByClassName("age")[0];
 
 let correct = document.getElementById("correct");
 let correctNum = 0;
@@ -23,109 +24,132 @@ wrong.innerText = `Wrong: ${wrongNum}`;
 
 state.innerText = `Hi!`;
 
+let style = document.getElementById("stylesheet");
+
 function login() {
     document.getElementById("main").style.display = "none";
-    document.getElementById("login").style.display = "grid";
+    document.getElementsByClassName("login-aside")[0].style.display = "grid";
+}
+
+function isLogical() {
+    return expression.innerText.includes('>') || expression.innerText.includes('<')
+}
+
+function reset(stateReset) {
+    if (stateReset == true) {
+        state.innerText = "";
+    }
+    expression.innerText = "";
+    input.disabled = false;
+    input.value = "";
+    input.placeholder = "Your Answer...";
+}
+
+function evaluate(logical) {
+    try {
+        let exp = eval(expression.innerText);
+        if (logical) {
+            ans = true;
+        }
+        else {
+            ans = input.value;
+        }
+        if (exp == ans) {
+            state.id = "status-correct";
+            state.innerText = "Great Job!";
+            correctNum++;
+            correct.innerText = `Correct: ${correctNum}`;
+        }
+        else {
+            state.id = "status-wrong";
+            state.innerText = "Try Again!";
+            wrongNum++;
+            wrong.innerText = `Wrong: ${wrongNum}`;
+        }
+    }
+    catch {
+        state.id = "";
+        state.innerText = "Error!";
+    }
+    reset(false);
 }
 
 buttons.map(button => {
     button.addEventListener("click", (e) => {
-        if (e.target.innerText == "C") {
-            expression.innerText = "";
-            state.innerText = "";
-        }
-        else if (e.target.innerText == "DEL") {
-            expression.innerText = expression.innerText.slice(0, -1);
-            if (!(expression.innerText.includes('>') || expression.innerText.includes('<'))) {
-                input.disabled = false;
-                input.placeholder = "Your Answer...";
-            }
-            state.innerText = "";
-        }
-        else if (e.target.innerText == "SUBMIT") {
-            if (expression.innerText.includes('>') || expression.innerText.includes('<')) {
-                try {
-                    let ans = eval(expression.innerText);
-                    if (ans == true) {
-                        state.id = "status-correct";
-                        state.innerText = "Great Job!";
-                        correctNum++;
-                        correct.innerText = `Correct: ${correctNum}`;
-                    }
-                    else {
-                        state.id = "status-wrong";
-                        state.innerText = "Try Again!";
-                        wrongNum++;
-                        wrong.innerText = `Wrong: ${wrongNum}`;
-                    }
-                    expression.innerText = "";
-                }
-                catch {
-                    state.id = "";
-                    state.innerText = "Error!";
-                }
-                expression.innerText = "";
-                input.disabled = false;
-                input.value = "";
-                input.placeholder = "Your Answer...";
-            }
-            else if (input.value.length == 0) {
-                state.id = "";
-                state.innerText = "Input Answer!";
-            }
-            else if (expression.innerText.length != 0) {
-                try {
-                    let ans = eval(expression.innerText);
-                    if (ans == input.value) {
-                        state.id = "status-correct";
-                        state.innerText = "Great Job!";
-                        correctNum++;
-                        correct.innerText = `Correct: ${correctNum}`;
-                    }
-                    else {
-                        state.id = "status-wrong";
-                        state.innerText = "Try Again!";
-                        wrongNum++;
-                        wrong.innerText = `Wrong: ${wrongNum}`;
-                    }
-                }
-                catch {
-                    state.id = "";
-                    state.innerText = "Error!";
-                }
-                expression.innerText = "";
-                input.disabled = false;
-                input.value = "";
-                input.placeholder = "Your Answer...";
-            }
+        let buttonName = e.target.innerText;
+        switch (buttonName) {
 
-        }
-        else if (e.target.innerText == "<" || e.target.innerText == ">") {
-            input.disabled = true;
-            input.placeholder = "Disabled.";
-            expression.innerText += e.target.innerText;
-        }
-        else {
-            state.innerText = "";
-            if (expression.innerText.length < 21) {
-                expression.innerText += e.target.innerText;
-            }
-            else {
-                state.innerText = "Maximum Characters";
-            }
+            case "C":
+                reset(true);
+                break;
+
+            case "DEL":
+                expression.innerText = expression.innerText.slice(0, -1);
+                if (!isLogical()) {
+                    input.disabled = false;
+                    input.placeholder = "Your Answer...";
+                }
+                state.innerText = "";
+                break;
+
+            case "SUBMIT":
+                if (isLogical()) {
+                    evaluate(true);
+                }
+                else if (input.value.length == 0) {
+                    state.id = "";
+                    state.innerText = "Input Answer!";
+                }
+                else if (expression.innerText.length != 0) {
+                    evaluate(false);
+                }
+                break;
+
+            case "<": case ">":
+                input.disabled = true;
+                input.placeholder = "Disabled.";
+                expression.innerText += buttonName;
+                break;
+
+            default:
+                state.innerText = "";
+                if (expression.innerText.length < 21) {
+                    expression.innerText += buttonName;
+                }
+                else {
+                    state.innerText = "Maximum Characters";
+                }
+                break;
         }
     });
 });
 
 themes.map(theme => {
     theme.addEventListener("click", (e) => {
-        document.getElementById("default").id = "";
-        e.target.id = "default";
+        document.getElementsByClassName("theme-default")[0].className = "theme";
+        e.target.className = "theme-default";
+        switch(e.target.innerText) {
+            case "Default":
+                style.href = "assets/css/default.css";
+                break;
+            case "Space":
+                style.href = "assets/css/space.css";
+                break;
+            case "Colorful":
+                style.href = "assets/css/colorful.css";
+                break;
+            case "Marvel":
+                style.href = "assets/css/marvel.css";
+                break;
+            default:
+                break;
+        }
     });
 });
+
 submit.addEventListener("click", (e) => {
-    if(userName.value != "" && age.value != "") {
-        document.getElementById("login").style.display = "none";
+    if (userName.value != "" && age.value != "") {
+        document.getElementsByClassName("login-aside")[0].style.display = "none";
         document.getElementById("main").style.display = "grid";
     }
     correctNum = 0;

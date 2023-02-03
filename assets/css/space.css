@@ -1,0 +1,8 @@
+@import "default.css";
+
+body, .login-nav {
+    background-color: black;
+}
+.login-aside .container, .age-container, .name-container, .login-text {
+    background-color: #1d1135;
+}

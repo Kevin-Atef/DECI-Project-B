@@ -1,22 +1,20 @@
-#login .container {
+.login-aside .container {
     background-color: #181f32;
     display: grid;
     border-radius: 10px;
     gap: 25px;
 }
-
-.name,
-.age {
+.age-container, .name-container {
     background-color: #181f32;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
-#name,
-#age,
-.theme,
-#submit {
+.name,
+.age,
+.theme, .theme-default,
+.submit {
     color: white;
     width: 100%;
     border-style: none;
@@ -37,8 +35,8 @@
     gap: 5px;
 }
 
-.theme,
-#submit {
+.theme, .theme-default,
+.submit {
     height: 40px;
     font-size: 20px;
     justify-content: center;
@@ -46,27 +44,27 @@
     align-items: center;
 }
 
-#default {
+.theme-default {
     background-color: #273252;
 }
 
-.theme:hover {
+.theme:hover, .theme-default:hover {
     cursor: pointer;
     background-color: #273252;
     transition: 0.2s;
 }
 
-#submit {
+.submit {
     display: grid;
     background-color: #000;
     font-size: 25px;
 }
 
-#submit:hover {
+.submit:hover {
     cursor: pointer;
 }
 
-#login {
+.login-aside {
     display: grid;
 }
 
