@@ -11,14 +11,18 @@
 </head>
 
 <body>
-  <nav class="nav">
+  <nav>
     <div class="container">
       <div>
         <a href="index.html" class="logo">KidCalc</a>
       </div>
-      <div class="login-button">
-        <button onclick="login()" class="login-nav"><i class="fa fa-sign-in"></i> Login</a>
+      <div class="nav-themes">
+        <div class="login-nav">Default</div>
+        <div class="login-nav">Space</div>
+        <div class="login-nav">Colorful</div>
+        <div class="login-nav">Marvel</div>
       </div>
+      <button onclick="login()" class="login-nav"><i class="fa fa-sign-in"></i> Login</button>
     </div>
   </nav>
   <aside class="login-aside">
@@ -34,10 +38,10 @@
       <div class="dropdown">
         <p class="login-text">Choose Theme:</p>
         <ul id="themes">
-          <li class="theme-default">Default</li>
-          <li class="theme">Space</li>
-          <li class="theme">Colorful</li>
-          <li class="theme">Marvel</li>
+          <li class="theme-default" id="default">Default</li>
+          <li class="theme" id="space">Space</li>
+          <li class="theme" id="colorful">Colorful</li>
+          <li class="theme" id="marvel">Marvel</li>
         </ul>
       </div>
       <div class="submit">SUBMIT</div>
@@ -75,6 +79,8 @@
       </div>
     </div>
   </main>
+  <footer>
+  </footer>
   <script src="assets/js/script.js"></script>
 </body>
 

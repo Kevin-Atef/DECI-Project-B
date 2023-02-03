@@ -1,28 +1,32 @@
 @import "default.css";
 
 body,
-.login-nav {
-    background-color: black;
+button{
+    background-color: #ebcb5a;
 
+}
+
+.login-nav, .logo {
+    color: black;
+}
+.login-nav:hover, .logo:hover {
+    color: #646464;
 }
 
 .login-aside .container,
 .age-container,
 .name-container,
 .login-text,
-#themes,
-.expression,
-.op {
-    background-color: #00481A;
+#themes, .expression, .op {
+    background-color: #20639b;
     color: white;
 }
 
 .name,
 .age,
 .theme,
-.input,
-.del {
-    background-color: #f8bc04;
+.input, .del {
+    background-color: #3caea3;
     color: black;
 }
 
@@ -32,8 +36,8 @@ body,
 .info,
 .status,
 .correct,
-.wrong {
-    background-color: #001736;
+.wrong  {
+    background-color: #173f5f;
 }
 
 input::placeholder,
@@ -42,14 +46,17 @@ input::placeholder,
 }
 
 .theme-default {
-    background-color: #f8bb044d;
+    background-color: #2d857c;
     color: white;
 }
 
 .theme:hover,
 .theme-default:hover {
     cursor: pointer;
-    background-color: #f8bb044d;
+    background-color: #2d857c;
     color: white;
     transition: 0.2s;
 }
+
+
+

@@ -8,6 +8,7 @@ let buttons = Array.from(document.getElementsByClassName("button"));
 
 let themes = Array.from(document.getElementsByClassName("theme"));
 themes.push(document.getElementsByClassName("theme-default")[0]);
+let navThemes = Array.from(document.getElementsByClassName("nav-themes"));
 
 let submit = document.getElementsByClassName("submit")[0];
 
@@ -140,6 +141,26 @@ themes.map(theme => {
                 break;
             case "Marvel":
                 style.href = "assets/css/marvel.css";
+                break;
+            default:
+                break;
+        }
+    });
+});
+navThemes.map(navTheme => {
+    navTheme.addEventListener("click", (e) => {
+        switch(e.target.innerText) {
+            case "Default":
+                document.getElementById("default").click();
+                break;
+            case "Space":
+                document.getElementById("space").click();
+                break;
+            case "Colorful":
+                document.getElementById("colorful").click();
+                break;
+            case "Marvel":
+                document.getElementById("marvel").click();
                 break;
             default:
                 break;

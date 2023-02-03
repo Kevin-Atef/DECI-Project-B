@@ -50,7 +50,7 @@ main {
     color: #d0312d;
 }
 
-#correct {
+.correct {
     background-color: #000;
     grid-area: correct;
     justify-self: start;
@@ -59,7 +59,7 @@ main {
     font-size: 25px;
 }
 
-#wrong {
+.wrong {
     background-color: #000;
     grid-area: wrong;
     justify-self: end;
