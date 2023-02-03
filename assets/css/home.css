@@ -1,0 +1,132 @@
+.top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+main {
+    display: grid;
+}
+
+#input,
+.expression,
+.info {
+    color: white;
+    width: 100%;
+    border-style: none;
+    border-radius: 10px;
+    height: 50px;
+    padding: 10px;
+    color: white;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.info {
+    background-color: #000;
+    display: grid;
+    height: 90px;
+    grid-template-areas: "status status" "correct wrong";
+}
+
+#input {
+    background-color: #34436d;
+    height: 50px;
+}
+
+#status {
+    background-color: #000;
+    grid-area: status;
+    justify-self: center;
+}
+
+#correct {
+    background-color: #000;
+    grid-area: correct;
+    justify-self: start;
+    align-self: end;
+    color: #00ab41;
+    font-size: 25px;
+}
+
+#wrong {
+    background-color: #000;
+    grid-area: wrong;
+    justify-self: end;
+    align-self: end;
+    color: #d0312d;
+    font-size: 25px;
+}
+
+.expression {
+    background-color: #181f32;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+#input::placeholder {
+    color: white;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#input[type="text"] {
+    color: white;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    column-gap: 10px;
+    row-gap: 10px;
+    margin-top: 10px;
+}
+
+.button {
+    font-family: 'League Spartan', sans-serif;
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    border-bottom: 4px solid #00ab41;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+}
+
+.button:hover {
+    border-bottom: 2px solid #00ab41;
+    cursor: pointer;
+}
+
+.button:active {
+    border-bottom: 0px;
+}
+
+#equal {
+    grid-column: 1/5;
+    width: 100%;
+    background-color: #000;
+    color: white;
+}
+
+.del {
+    background-color: #34436d;
+    color: white;
+}
+
+.op {
+    background-color: #181f32;
+    color: white;
+}
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KidCalc</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" id="logo">KidCalc</a>
+      </div>
+      <div class="login-button">
+        <button onclick="login()" class="login"><i class="fa fa-sign-in"></i> Login</a>
+      </div>
+    </div>
+  </nav>
+  <aside id="login">
+    <div class="container">
+      <div class="name">
+        <p class="login-text">Name:</p>
+        <input type="text" name="name" id="name" placeholder="Name">
+      </div>
+      <div class="age">
+        <p class="login-text">Age:</p>
+        <input type="number" name="age" id="age" placeholder="Age">
+      </div>
+      <div class="dropdown">
+        <p class="login-text">Choose Theme:</p>
+        <ul id="themes">
+          <li class="theme">Default</li>
+          <li class="theme"></li>
+          <li class="theme"></li>
+          <li class="theme"></li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+  <main id="main">
+    <div class="container">
+      <div class="top">
+        <div class="info">
+          <div id="status"></div>
+          <div id="correct"></div>
+          <div id="wrong"></div>
+        </div>
+        <div class="expression" id="expression"></div>
+        <input type="number" name="input" id="input" placeholder="Your Answer...">
+      </div>
+      <div class="buttons">
+        <div class="button">7</div>
+        <div class="button">8</div>
+        <div class="button">9</div>
+        <div class="button del" id="del">DEL</div>
+        <div class="button">4</div>
+        <div class="button">5</div>
+        <div class="button">6</div>
+        <div class="button del" id="clear">C</div>
+        <div class="button">1</div>
+        <div class="button">2</div>
+        <div class="button">3</div>
+        <div class="button op">+</div>
+        <div class="button op">&lt;</div>
+        <div class="button">0</div>
+        <div class="button op">></div>
+        <div class="button op">-</div>
+        <div class="button" id="equal">SUBMIT</div>
+      </div>
+    </div>
+  </main>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
